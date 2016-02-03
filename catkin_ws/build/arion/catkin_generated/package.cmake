@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "arion")
+set(arion_MAINTAINER "stagiaire <stagiaire@todo.todo>")
+set(arion_DEPRECATED "")
+set(arion_VERSION "0.0.0")
+set(arion_BUILD_DEPENDS "roscpp" "rospy")
+set(arion_RUN_DEPENDS "roscpp" "rospy")
+set(arion_BUILDTOOL_DEPENDS "catkin")

@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+<launch>
+
+     <!-- Launch Keyboard interface-->
+
+     <!-- Launch Joystick interface-->
+
+    <!-- Launch Robot physical TF parameter-->
+  <param name="robot_description" textfile="$(find arion_description)/urdf/arion.urdf"/>
+
+  <node name="static_tf_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+  </node>
+
+
+   <!-- Launch Control-->
+
+
+</launch>

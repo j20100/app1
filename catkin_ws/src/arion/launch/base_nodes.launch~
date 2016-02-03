@@ -1,0 +1,36 @@
+<?xml version='1.0'?>
+<launch>
+
+     <!-- Launch Keyboard interface-->
+
+    <node pkg="arion" name="keyboard_command" type="keyboard_command.py" output="screen">
+      <param name="manual_movement_command" value="/teleop/cmd_vel_key" />
+      <param name="keyboard_sub" value="/keyboard" />
+      <param name="keyboard_increment" value="0.05" />
+      <param name="keyboard_decrement" value="0.05" />
+    </node>		
+
+    <node pkg="keyboard_interface" type="keyboard_node" name="keyboard_interface_node"/>
+
+    <node pkg="arion" type="time_init.sh" name="time_init"/>
+
+     <!-- Launch Joystick interface-->
+    <include file="$(find command_joy)/launch/command_joy.launch"/> 
+
+    <!-- Launch Robot physical TF parameter-->
+  <param name="robot_description" textfile="$(find arion_description)/urdf/arion.urdf"/>
+
+  <node name="static_tf_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+  </node>
+
+
+   <!-- Launch Control-->
+     <include file="$(find arion_control)/launch/arion_control.launch"/>
+
+
+
+
+
+
+</launch>

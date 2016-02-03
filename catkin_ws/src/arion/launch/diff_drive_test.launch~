@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<launch>
+  <master auto="start"/>
+
+ <!-- <include file="$(find arion)/launch/base_nodes.launch"/> -->
+ <!-- <include file="$(find arion)/launch/nav_nodes.launch"/>  -->
+ <!-- <include file="$(find arion)/launch/nav_rviz.launch"/> -->
+ <!-- <include file="$(find arion)/launch/remote_raspi_nodes.launch"/> -->
+ <!-- <include file="$(find arion)/config/slam_gmapping_Leddar.xml"/> -->
+
+  <!--<include file="$(find arion)/launch/navsat_transform.launch"/> -->
+
+
+  <include file="$(find arion_control)/launch/arion_contorl.launch"/>
+
+  <!-- Launch Robot physical TF parameter-->
+  <param name="robot_description" textfile="$(find arion_description)/urdf/arion.urdf"/>
+  <node name="static_tf_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+  </node>
+
+  
+
+
+</launch>

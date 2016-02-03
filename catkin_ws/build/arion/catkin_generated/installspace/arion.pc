@@ -1,0 +1,8 @@
+prefix=/home/jonathan/catkin_ws/install
+
+Name: arion
+Description: Description of arion
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/jonathan/catkin_ws/install/lib 
+Requires: roscpp

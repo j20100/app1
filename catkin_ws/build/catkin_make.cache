@@ -1,0 +1,2 @@
+arion:depthimage_to_laserscan:robot_control:robot_description:robot_gazebo:rtabmap_ros:test_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/jonathan/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jonathan/catkin_ws/install -G Unix Makefiles

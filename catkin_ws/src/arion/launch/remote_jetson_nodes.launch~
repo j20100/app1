@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+<launch>
+  <machine name="ubuntu" env-loader="/home/ubuntu/env.sh" address="192.168.0.151" user="root" password="ubuntu"/>
+
+      <node machine="ubuntu" pkg="gpio_control" name="gpio_control" type="gpio_control" output="screen">
+      </node>
+
+</launch>

@@ -1,0 +1,7 @@
+<?xml version='1.0'?>
+<launch>
+  <master auto="start"/>
+
+  <include file="$(find arion)/launch/base_nodes.launch"/>
+
+</launch>

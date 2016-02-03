@@ -1,0 +1,82 @@
+<robot name="robot">
+
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0.03" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.32 0.26 0.06"/>
+            </geometry>
+            <material name="Cyan1">
+                   <color rgba="0 0.9 0.9 1.0"/>
+             </material>
+        </visual>    
+    </link>
+    
+    <link name="column_link">
+        <visual>
+            <origin xyz="0 0 0.31" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.085" length="0.50"/>
+            </geometry>
+            <material name="Cyan2">
+                   <color rgba="0 0.7 0.7 1.0"/>
+             </material>
+        </visual>    
+    </link>
+
+
+    <link name="inner_link">
+        <visual>
+            <origin xyz="0.215 0 0.59" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.6 0.17 0.06"/>
+            </geometry>
+            <material name="Cyan2">
+                   <color rgba="0 0.7 0.7 1.0"/>
+             </material>
+        </visual>    
+    </link>
+
+
+    <link name="outer_link">
+        <visual>
+            <origin xyz="0.58 0 0.65" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.45 0.17 0.06"/>
+            </geometry>
+            <material name="Cyan2">
+                   <color rgba="0 0.7 0.7 1.0"/>
+             </material>
+        </visual>    
+    </link>
+
+
+
+
+    <!-- * * * Joint Definitions * * * -->
+
+    <joint name="base_joint" type="fixed">
+               <parent link="base_link"/>
+               <child link="column_link"/>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    
+    
+    <joint name="first_joint" type="fixed">
+               <parent link="column_link"/>
+               <child link="inner_link"/>
+               <axis xyz="0 0 1"/>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="second_joint" type="fixed">
+               <parent link="inner_link"/>
+               <child link="outer_link"/>
+               <axis xyz="0 0 1"/>
+               <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+
+
+</robot>

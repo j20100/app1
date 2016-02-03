@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+<launch>
+  <master auto="start"/>
+
+  <include file="$(find arion)/launch/base_nodes.launch"/>
+  <include file="$(find arion)/launch/nav_nodes.launch"/> 
+  <include file="$(find arion)/launch/nav_rviz.launch"/> 
+  <include file="$(find arion)/launch/remote_raspi_nodes.launch"/>
+  <include file="$(find arion)/config/slam_gmapping_Leddar.xml"/> 
+
+</launch>

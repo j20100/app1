@@ -1,0 +1,35 @@
+<?xml version='1.0'?>
+<launch>
+  <master auto="start"/>
+
+  <!-- <include file="$(find arion)/launch/navsat_transform.launch"/>      -->
+ <include file="$(find arion)/launch/base_nodes.launch"/>
+ <include file="$(find arion)/launch/robot_localisation.launch"/>
+ <!-- <include file="$(find arion)/launch/nav_nodes.launch"/> -->
+
+
+
+<!--
+ <node pkg="arion" type="quat_to_euler.py" name="imu_euler_angles" output="screen" >
+    <param name="use_imu" value = "true"/>
+    <remap from="imu"   to="/imu/data"/>
+    <remap from="euler" to="/imu/euler"/>
+ </node>
+
+<node pkg="arion" type="quat_to_euler.py" name="wheel_odom_euler_angles" output="screen">
+    <param name="use_imu" value = "false"/>
+    <remap from="odom"  to="/odometry/wheel_odom"/>
+    <remap from="euler" to="/odometry/wheel_euler"/>
+</node>
+
+<node pkg="arion" type="quat_to_euler.py" name="odom_local_euler_angles" output="screen">
+    <param name="use_imu" value = "false"/>
+    <remap from="odom"  to="/odometry/filtered/local"/>
+    <remap from="euler" to="/odometry/local_euler"/>
+</node>
+-->
+
+ <!--Launch RViz with parameter for GPS   -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arion)/rviz_loc.rviz" /> -->
+
+</launch>

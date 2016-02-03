@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "robot_control")
+set(robot_control_MAINTAINER "Tristan Crossman <tristan.crossman@usherbrooke.ca>")
+set(robot_control_DEPRECATED "")
+set(robot_control_VERSION "0.0.0")
+set(robot_control_BUILD_DEPENDS "controller_manager" "roscpp" "rospy" "control_msgs" "std_msgs")
+set(robot_control_RUN_DEPENDS "controller_manager" "roscpp" "rospy" "control_msgs" "std_msgs")
+set(robot_control_BUILDTOOL_DEPENDS "catkin")
