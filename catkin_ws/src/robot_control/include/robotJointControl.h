@@ -19,7 +19,7 @@ class robotJointControl
 {
 
 public:
-	float theta1, theta2, theta4; //angles des articulations rotoides
+	double theta1, theta2, theta4; //angles des articulations rotoides
 	double d3; //amplitude de la translation de l'articulation prismatiques
 
 	robotJointControl(ros::NodeHandle* node); //initialisation de la classe robotJointControl
@@ -29,9 +29,8 @@ public:
 	void goalPos(std::string joint_name, double joint_send_value, ros::Duration time_tot, ros::Rate rate); //génère un thread en fonction d'un profil de trajectoire
 
 	/*COMPLETEZ LA FONCTION CI DESSOUS DE LA CINEMATIQUE INVERSE*/
-	void IK();
+	void IK(double, double, double, double);
 
 private:
 	std::map<std::string, robotJoint*> joint_map_; //conteneur permettant d'accéder aux fonctions de la classe robotJoint
 };
-

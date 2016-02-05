@@ -36,10 +36,6 @@ robotJoint.h
 math.h
 -
 
-/home/jonathan/catkin_ws/src/robot_control/src/robotJoint.cpp
-robotJoint.h
-/home/jonathan/catkin_ws/src/robot_control/src/robotJoint.h
-
 /home/jonathan/catkin_ws/src/robot_control/src/robotJointControl.cpp
 robotJointControl.h
 /home/jonathan/catkin_ws/src/robot_control/src/robotJointControl.h

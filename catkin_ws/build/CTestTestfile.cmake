@@ -7,7 +7,6 @@
 SUBDIRS(gtest)
 SUBDIRS(robot_description)
 SUBDIRS(robot_gazebo)
-SUBDIRS(test_gazebo)
 SUBDIRS(arion)
 SUBDIRS(robot_control)
 SUBDIRS(depthimage_to_laserscan)

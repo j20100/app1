@@ -24,9 +24,23 @@ int main(int argc, char** argv)
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
-  ros::init(argc, argv, "pick and place");
+  ros::init(argc, argv, "pick_and_place");
 
-  //AJOUTEZ CI-DESSOUS VOTRE CODE DE LA TACHE PICK AND PLACE
+  ros::NodeHandle nh;
 
+  robotJointControl rjc(&nh);
 
+  double xc = 0.5;
+  double yc = 0.5;
+  double zc = 0.5;
+  double thetac = 0.5;
+
+  rjc.IK(xc,yc,zc,thetac);
+
+  ros::Rate r(10);
+	ros::Duration D(5);
+
+	rjc.goalPos("joint1", rjc.theta1, D, r);
+  rjc.goalPos("joint2", rjc.theta2, D, r);
+  D.sleep();
 }

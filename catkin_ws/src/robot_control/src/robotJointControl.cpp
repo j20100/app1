@@ -22,9 +22,9 @@ robotJointControl::robotJointControl(ros::NodeHandle* node)
 	}
 	else
 		ROS_ERROR("Get ros_param not found");
-	
+
 	std::map<std::string, robotJoint*>::iterator it;
-	
+
 	while (ros::ok())
 	{
 		for(it = joint_map_.begin(); it != joint_map_.end(); ++it)
@@ -35,7 +35,7 @@ robotJointControl::robotJointControl(ros::NodeHandle* node)
 				ROS_INFO("%s", it->second->getName().c_str());
 		}
 		!temp ? temp = true : init_joint = true ;
-				
+
 		if(init_joint)
 		{
 			break;
@@ -86,6 +86,20 @@ void robotJointControl::goalPos(std::string joint_name, double joint_send_value,
 }
 
 //COMPLETEZ LA FONCTION CI DESSOUS DE LA CINEMATIQUE INVERSE
-void robotJointControl::IK()
+void robotJointControl::IK(double xc, double yc, double zc, double thetac)
 {
+	double l1 = 0.8;
+	double l2 = 0.4;
+	double l3 = 0;
+
+	double R = sqrt(xc*xc+yc*yc);
+	double beta = acos((R*R-l1*l1-l2*l2)/(-2*l1*l2));
+	theta2 = 3.1416 - beta;
+	double lambda = atan2(yc,xc);
+	double psi = asin((l2*sin(theta2))/R);
+	theta1 = lambda - psi;
+
+	ROS_INFO_STREAM("theta2 : " << theta2 << " theta1 : " << theta1);
+
+
 }

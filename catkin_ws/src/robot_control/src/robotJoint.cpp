@@ -14,14 +14,14 @@ robotJoint::robotJoint(std::string joint_name, ros::NodeHandle* node, int rate)
 	robot_joint_name_ = joint_name;
 	std::ostringstream joint_name_command_;
 	std::ostringstream joint_name_state_;
-	
+
 	joint_name_command_ << "/robot/" << robot_joint_name_.c_str() << "_position_controller/command";
 	joint_name_state_ << "/robot/" << robot_joint_name_.c_str() << "_position_controller/state";
-	
+
 	rate_ = rate;
 	stop_thread_ = false;
 	first_msg = false;
-	
+
 	joint_pub_ = node->advertise<std_msgs::Float64>(joint_name_command_.str().c_str(), 1000);
 	joint_sub_ = node->subscribe(joint_name_state_.str().c_str(), 1000, &robotJoint::robotCallback, this);
 }
@@ -79,13 +79,13 @@ void robotJoint::pubThread(int rate)
 		msg_out_.data = send_value_;
 		kill_me = stop_thread_;
 		//mutex_.unlock();
-	
+
 		joint_pub_.publish(msg_out_);
-		
+
 		ros::spinOnce();
-		
+
 		loop_rate.sleep();
-		
+
 		if(kill_me)
 			break;
 	}
@@ -97,6 +97,34 @@ void robotJoint::goalPos(double j_val, ros::Duration tf, ros::Rate rate)
 }
 
 //COMPLETEZ LA FONCTION PERMETTANT DE GENERER UNE TRAJECTOIRE POLYNOMIALE CUBIQUE
-void robotJoint::cubic_trajectory(double j_fin, ros::Duration tf, ros::Rate rate)
+void robotJoint::cubic_trajectory(double j_fin, ros::Duration tf_, ros::Rate rate)
 {
+	double tf = double(tf_.toSec());
+	double qi = joint_value_;
+	double qf = j_fin;
+	double a0 = qi;
+	double a1 = 0;
+	double a2 = -3*(qi-qf)/(tf*tf);
+	double a3 = -2*a2/(3*tf);
+	double t = 0;
+	double dq = 0;
+	ros::Time begin = ros::Time::now();
+	ros::Time now = ros::Time::now();
+
+	while (ros::ok())
+	{
+		now = ros::Time::now();
+		t = double(now.toSec()-begin.toSec());
+		dq = a3*(t*t*t)+a2*(t*t)+a1*t+a0;
+		setJoint(dq);
+
+		ROS_INFO_STREAM(" dq : " << dq);
+
+		//Condition de sortie
+		if (t >= tf)
+		{
+			break;
+		}
+		rate.sleep();
+	}
 }
